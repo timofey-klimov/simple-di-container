@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SimpleDI.Container;
+using System;
+using System.Reflection;
 
 namespace SimpleDI
 {
@@ -6,7 +8,11 @@ namespace SimpleDI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var container = new SimpleContainer(Assembly.GetExecutingAssembly());
+            container.AddType<ITestType, TestType>();
+            var provider = container.BuildServiceProvider();
+
+            var type = provider.CreateInstanse<ITestType>();
         }
     }
 }
