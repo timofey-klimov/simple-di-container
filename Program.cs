@@ -1,5 +1,5 @@
 ﻿using SimpleDI.Container;
-using System;
+using SimpleDI.Test;
 using System.Reflection;
 
 namespace SimpleDI
@@ -9,10 +9,10 @@ namespace SimpleDI
         static void Main(string[] args)
         {
             var container = new SimpleContainer(Assembly.GetExecutingAssembly());
-            container.AddType<ITestType, TestType>();
+           
             var provider = container.BuildServiceProvider();
 
-            var type = provider.CreateInstanse<ITestType>();
+            var type = provider.CreateInstanse<TestTypeConstructor>();
         }
     }
 }
